@@ -1,12 +1,8 @@
-import CountBtn from "./CountButton";
-
-
-export default function ButtonContainer({setCount, locked}) {
+export default function ButtonContainer({children}) {
  return (
         <div className="button-container">
-          <CountBtn type="minus" locked={locked} setCount={setCount}/>
-          <CountBtn type="plus" locked={locked} setCount={setCount} />
-   
+          {/* children will search for the Btn in the main parent of the react dom */}
+          {children}
         </div>
  );
 }
