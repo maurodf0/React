@@ -4,8 +4,9 @@ function ResetBtn({setCount}){
     return (
        
     <button onClick={
-        () => {
+        (e) => {
             setCount(0);
+            e.target.blur();
         }
     } className="reset-btn">
         <ResetIcon className="reset-btn-icon"/>
