@@ -13,7 +13,6 @@ export default function Textarea() {
         setShowWarning(true);
         newText = newText.replace('<script>', '');
         setText(newText);
-
       }
 
     }
