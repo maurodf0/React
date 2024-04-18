@@ -11,12 +11,12 @@ export default function Textarea() {
       setText(newText);
       if(newText.includes('<script>')){
         setWarningText('No script tag allowed!');
-        
         newText = newText.replace('<script>', '')
       } else if(newText.includes('@')){
-        setWarningText('No @ allowed!');
-         
           newText = newText.replace('@', '')
+          setWarningText('No @ allowed!');
+        } else {
+         setWarningText('');
         }
       
       setText(newText);
