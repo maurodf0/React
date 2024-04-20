@@ -8,8 +8,8 @@ export default function Container() {
   const stats = {
     numberOfCharacters: text.length,
     numberofWords: text.split(' ').length,
-    instagramCharacters: 280 -  text.length,
-    facebookCharacters: 2200 -  text.length,
+    instagramCharacters: 280 - text.length,
+    facebookCharacters: 2200 - text.length,
   }
 
   return (
