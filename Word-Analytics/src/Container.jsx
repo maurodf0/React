@@ -4,13 +4,18 @@ import { useState } from "react";
 
 export default function Container() {
   const [text, setText] = useState('');
-  const numberOfCharacters = text.length;
-  const numberofWords = text.split(' ').length;
+  
+  const stats = {
+    numberOfCharacters: text.length,
+    numberofWords: text.split(' ').length,
+    instagramCharacters: 280 -  text.length,
+    facebookCharacters: 2200 -  text.length,
+  }
 
   return (
     <main className="container">
       <Textarea text={text} setText={setText}/>
-      <Stats numberOfCharacters={numberOfCharacters} numberofWords={numberofWords}/>
+      <Stats stats={stats}/>
     </main>
   )
 }
