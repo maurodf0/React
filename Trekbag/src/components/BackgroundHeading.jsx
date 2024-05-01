@@ -1,7 +1,3 @@
 export default function BackgroundHeading() {
-  return (
-    <div>
-      bg
-    </div>
-  )
+  return <h1>TREKBAG</h1>
 }
