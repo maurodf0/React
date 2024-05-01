@@ -1,11 +1,5 @@
 import Button from "./Button";
-
-const secondaryButtonsText = [
-    "Mark all as complete", 
-    "Mark all as incomplete", 
-    "Reset to initial", 
-    "Remove all items"
-    ];
+import {secondaryButtonsText} from "../lib/constants";
 
 export default function ButtonGroup() {
 
