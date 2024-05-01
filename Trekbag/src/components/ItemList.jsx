@@ -20,7 +20,6 @@ function Item({item}) {
         <input checked={item.packed} type="checkbox"/>
         {item.name}
         </label>
-
         <button>❌</button>
      </li>
   )
