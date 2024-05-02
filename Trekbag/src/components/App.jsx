@@ -9,6 +9,18 @@ import { useState } from "react"
 function App() {
   const [items, setItems] = useState(initialItems);
 
+  // creiamo una funzione generica per gestire le nuove tasks
+  //in modo da non dover passare setItems in tutti i component
+  const handleAddItem = (newItemText) => {
+    const newItem = {
+      id: new Date().getTime(),
+      name: newItemText,
+      packed: false,
+    }
+    const newItems = [...items, newItem]
+    setItems(newItems);
+  }
+
   return (
     <>
     <BackgroundHeading />
@@ -20,7 +32,7 @@ function App() {
       i valori dai singoli component e li portiamo ad un lviello più alto 
       nell'app) */}
       <ItemList items={items} />
-      <Sidebar setItems={setItems}/>
+      <Sidebar handleAddItem={handleAddItem}/>
     </main>
     < Footer />
     </>

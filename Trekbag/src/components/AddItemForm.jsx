@@ -2,7 +2,7 @@ import Button from "./Button.jsx";
 import { useState, useRef } from "react";
 
 
-export default function AddItemForm({setItems}) {
+export default function AddItemForm({handleAddItem}) {
   const [itemText, setItemText] = useState("");
   // usiamo useRef per avere un riferimento di un elemento nel DOM
   // tipo document.querySelector
@@ -18,12 +18,7 @@ export default function AddItemForm({setItems}) {
       return;
     }
 
-    const newItem = {
-      id: new Date().getTime(),
-      name: itemText,
-      packed: false,
-    }
-    setItems(prev => [...prev, newItem]);
+    handleAddItem(itemText);
     setItemText("");
   }
 
