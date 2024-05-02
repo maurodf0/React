@@ -1,8 +1,12 @@
 import Button from "./Button.jsx";
-import { useState } from "react";
+import { useState, useRef } from "react";
+
 
 export default function AddItemForm({setItems}) {
   const [itemText, setItemText] = useState("");
+  // usiamo useRef per avere un riferimento di un elemento nel DOM
+  // tipo document.querySelector
+  const inputRef = useRef();
   return (
     <form onSubmit={
       (e) => {
@@ -11,8 +15,8 @@ export default function AddItemForm({setItems}) {
         // Basic Validation
         if(!itemText){
           alert("Item can'be empty");
+          inputRef.current.focus();
           return;
-
         }
 
         const newItem = {
@@ -25,6 +29,9 @@ export default function AddItemForm({setItems}) {
     }}>
       <h2>Add an Item</h2>
       <input 
+      //con l'attributo ref possiamo accedere a un elemento nel DOM
+      //precedentemente selezionato con useRef
+      ref={inputRef}
       autoFocus="true"
       value={itemText} 
       onChange={(e) => setItemText(e.target.value)}/>
