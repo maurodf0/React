@@ -26,7 +26,7 @@ export default function ButtonGroup({
       
       {/* {
         without destructuring
-        
+
         secondaryButtons.map(button => {
           return <Button 
           key={button.text} 
@@ -39,7 +39,7 @@ export default function ButtonGroup({
 {
         secondaryButtons.map(({text, onClick}) => {
           return <Button 
-          key={text} 
+          key={text + onClick.toString()} 
           buttonType="secondary" 
           onClick={onClick}
           >{text}</Button>
