@@ -5,24 +5,24 @@ export default function ItemList({items, handleRemoveItem, handleToggleItem}) {
         return <Item  
           key={item.id} 
           item={item}  
-          handleRemoveItem={handleRemoveItem}
-          handleToggleItem={handleToggleItem}/>
+          onRemoveItem={handleRemoveItem}
+          onToggleItem={handleToggleItem}/>
     })}
     </ul>
   )
 }
 
 
-function Item({item, handleRemoveItem, handleToggleItem}) {
+function Item({item, onRemoveItem, onToggleItem}) {
   return (
       <li className="item">
         <label htmlFor="999">
-        <input onChange={() => handleToggleItem(item.id)} checked={item.packed} type="checkbox"/>
+        <input onChange={() => onToggleItem(item.id)} checked={item.packed} type="checkbox"/>
         {item.name}
         </label>
         <button 
           onClick={() => {
-            handleRemoveItem(item.id)
+            onRemoveItem(item.id)
           }}>❌</button>
      </li>
   )
