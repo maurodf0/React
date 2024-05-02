@@ -17,9 +17,37 @@ function App() {
       name: newItemText,
       packed: false,
     }
+
     const newItems = [...items, newItem]
     setItems(newItems);
   }
+
+  const handleRemoveAllItems = () => {
+    setItems([]);
+  }
+
+  const handleResetToInitial = () => {
+    setItems(initialItems);
+  }
+
+  const handleMarkAllAsComplete = () => {
+    const newItems = items.map(item => {
+      //prendiamo tutto il valore di items e lo aggiorniamo
+      //in modo che tutti i valori packed siano true
+      return {...item, packed: true}
+    })
+    setItems(newItems);
+  }
+
+  const handleMarkAllAsIncomplete = () => {
+    const newItems = items.map(item => {
+      //prendiamo tutto il valore di items e lo aggiorniamo
+      //in modo che tutti i valori packed siano false
+      return {...item, packed: false}
+    })
+    setItems(newItems);
+  }
+
 
   return (
     <>
@@ -32,7 +60,12 @@ function App() {
       i valori dai singoli component e li portiamo ad un lviello più alto 
       nell'app) */}
       <ItemList items={items} />
-      <Sidebar handleAddItem={handleAddItem}/>
+      <Sidebar
+        handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
+        handleMarkAllAsComplete={handleMarkAllAsComplete}
+        handleResetToInitial={handleResetToInitial}
+        handleAddItem={handleAddItem} 
+        handleRemoveAllItems={handleRemoveAllItems}/>
     </main>
     < Footer />
     </>

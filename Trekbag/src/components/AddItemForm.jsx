@@ -2,7 +2,7 @@ import Button from "./Button.jsx";
 import { useState, useRef } from "react";
 
 
-export default function AddItemForm({handleAddItem}) {
+export default function AddItemForm({onAddItem}) {
   const [itemText, setItemText] = useState("");
   // usiamo useRef per avere un riferimento di un elemento nel DOM
   // tipo document.querySelector
@@ -18,7 +18,7 @@ export default function AddItemForm({handleAddItem}) {
       return;
     }
 
-    handleAddItem(itemText);
+    onAddItem(itemText);
     setItemText("");
   }
 
@@ -29,7 +29,7 @@ export default function AddItemForm({handleAddItem}) {
       //con l'attributo ref possiamo accedere a un elemento nel DOM
       //precedentemente selezionato con useRef
       ref={inputRef}
-      autoFocus="true"
+      autoFocus
       value={itemText} 
       onChange={(e) => setItemText(e.target.value)}/>
       <Button>Add item to list</Button>
