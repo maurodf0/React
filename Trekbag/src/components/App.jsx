@@ -63,12 +63,14 @@ function App() {
     setItems(newItems);
   }
 
+  const totalNumberOfItems = items.length;
+
 
   return (
     <>
     <BackgroundHeading />
     <main>
-      <Header />
+      <Header numberOfItemsPacked={items.filter(item => item.packed).length} totalNumberOfItems={totalNumberOfItems}/>
       {/* passiamo la funzione setItems e le props item 
       dal component per gestirle in tutta l'app
       passandole ad altri components (prendiamo 
