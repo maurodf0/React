@@ -1,4 +1,4 @@
-export default function Counter({totalNumberOfItems, numberOfItemsPacked}) {
+export default function Counter({numberOfItemsPacked, totalNumberOfItems}) {
 
   return (
     <div>
