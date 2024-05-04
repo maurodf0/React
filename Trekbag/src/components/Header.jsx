@@ -8,7 +8,7 @@ export default function Header() {
     <header>
         <Logo />
         <Counter 
-          numberofItemsPacked={items.filter(item => item.packed).length} 
+          numberOfItemsPacked={items.filter(item => item.packed).length} 
           totalNumberOfItems={items.length} 
         />
     </header>
