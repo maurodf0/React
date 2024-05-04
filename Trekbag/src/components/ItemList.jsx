@@ -1,6 +1,6 @@
 import EmptyView from "./EmptyView";
 import Select from "react-select";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 
 const sortingOptions = [
   {
@@ -21,7 +21,8 @@ export default function ItemList({items, handleRemoveItem, handleToggleItem}) {
 
   const [sortBy, setSortBy] = useState('default');
 
-  const sortedItems = [...items].sort((a, b) => {
+  const sortedItems = useMemo( () => {
+    return [...items].sort((a, b) => {
     if(sortBy === 'packed') {
       return b.packed - a.packed;
     }
@@ -31,6 +32,8 @@ export default function ItemList({items, handleRemoveItem, handleToggleItem}) {
 
     return;
   })
+  // Array indica che devo aggiornare solo se items o sortBy cambiano
+}, [items, sortBy]);
 
   return (
     <ul className="item-list">
