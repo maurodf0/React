@@ -4,10 +4,15 @@ import Footer from "./Footer"
 import Header from "./Header"
 import ItemList from "./ItemList"
 import Sidebar from "./Sidebar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function App() {
-  const [items, setItems] = useState(initialItems);
+
+  const [items, setItems] =
+      //if we have items in local storage, use them, otherwise use initial items
+     useState(() => {
+      return JSON.parse(localStorage.getItem('items')) || initialItems;
+     });
 
   // creiamo una funzione generica per gestire le nuove tasks
   //in modo da non dover passare setItems in tutti i component
@@ -65,6 +70,9 @@ function App() {
 
   const totalNumberOfItems = items.length;
 
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items])
 
   return (
     <>
