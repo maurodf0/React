@@ -1,15 +1,13 @@
 import Button from "./Button";
 //import {secondaryButtonsText} from "../lib/constants";
-import { useItemsContext } from "../lib/hooks";
+import { useItemsStore } from "../stores/itemsStore";
 
 export default function ButtonGroup() {
 
-  const {
-    handleMarkAllAsComplete,
-    handleMarkAllAsIncomplete,
-    handleResetToInitial,
-    handleRemoveAllItems
-  } = useItemsContext();
+const markAllAsComplete = useItemsStore(state => state.markAllAsComplete);
+const markAllAsIncomplete = useItemsStore(state => state.markAllAsIncomplete);
+const resetToInitial = useItemsStore(state => state.resetToInitial);
+const removeAllItems = useItemsStore(state => state.removeAllItems);
 
       //  const secondaryButtons = [
       // {
@@ -52,10 +50,10 @@ export default function ButtonGroup() {
         })
       } */}
 
-<Button onClick={handleMarkAllAsComplete} buttonType="secondary">Mark all as complete</Button>
-<Button onClick={handleMarkAllAsIncomplete} buttonType="secondary">Mark all as Incomplete</Button>
-<Button onClick={handleResetToInitial} buttonType="secondary">Reset to initial</Button>
-<Button onClick={handleRemoveAllItems} buttonType="secondary">Remove all Items</Button>
+<Button onClick={markAllAsComplete} buttonType="secondary">Mark all as complete</Button>
+<Button onClick={markAllAsIncomplete} buttonType="secondary">Mark all as Incomplete</Button>
+<Button onClick={resetToInitial} buttonType="secondary">Reset to initial</Button>
+<Button onClick={removeAllItems} buttonType="secondary">Remove all Items</Button>
  
 
      {/* Specifichiamo una Prop che viene passata al button
