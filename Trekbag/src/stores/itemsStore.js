@@ -1,8 +1,13 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import { initialItems } from "../lib/constants.js";
 
 
-export const useItemsStore = create( (set ) => ({
+export const useItemsStore = create( 
+    //passiamo il persist come parametro perchè vogliamo che l'elemento venga persistito con LocalStorage
+    persist(
+    //passiamo il set come parametro perchè vogliamo che l'elemento venga settato e passato in app
+    (set ) => ({
     items: initialItems,
     removeAllItems: () => {
         set(() => ({items: []}));
@@ -58,4 +63,9 @@ export const useItemsStore = create( (set ) => ({
             return {items: newItems};
         })
     },
-}))
+}), {
+    //lo stesso nome che usiamo con LocalStorage
+    name: "items"
+}
+)
+);
