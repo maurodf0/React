@@ -5,11 +5,11 @@ import HashtagList from './HashtagList';
 
 function App() {
   return (
-    <>
+    <div className="app">
     <Footer />
     <Container />
     <HashtagList />
-    </>
+    </div>
   )
 }
 
