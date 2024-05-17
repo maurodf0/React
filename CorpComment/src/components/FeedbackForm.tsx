@@ -5,6 +5,15 @@ export default function FeedbackForm() {
 
   const [text, setText] = useState('');
   const charsLeft = MAX_CHARS - text.length;
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = e.target.value;
+          
+         if( newText.length > MAX_CHARS){
+            return;
+        }
+
+          setText(e.target.value)
+  }
 
   return (
   <form className="form">
@@ -13,17 +22,7 @@ export default function FeedbackForm() {
       id="feedback-textarea" 
       placeholder="Tricky" 
       spellCheck={false}
-      onChange={
-        (e) => {
-          const newText = e.target.value;
-          
-         if( newText.length > MAX_CHARS){
-            return;
-        }
-
-          setText(e.target.value)
-
-      }}
+      onChange={handleChange}
     />
     <label htmlFor="feedback-textarea">
       Enter your feedback here, remember to #hashtag the company
