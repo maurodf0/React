@@ -1,9 +1,10 @@
-import FeedbackItem from "./FeedbackItem"
+import FeedbackItem from "./FeedbackItem";
+import { useEffect, useState } from "react";
 
 
 type Props = {}
 
-const feedbackItems = [
+const exampleFeedbackItems = [
   {
     upvoteCount: 593,
     badgeLetter: 'B',
@@ -19,6 +20,16 @@ const feedbackItems = [
   }];
 
 export default function FeedbackList({}: Props) {
+  const [feedbackItems, setFeedbackItems] = useState([]);
+
+  useEffect(() => {
+    fetch('https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks')
+      .then(res => res.json())
+      .then(data => {
+        setFeedbackItems(data.feedbacks);
+      })
+  }, [])
+
   return (
     <ol className='feedback-list'>
       {
