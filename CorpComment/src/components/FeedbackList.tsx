@@ -34,7 +34,7 @@ export default function FeedbackList({}: Props) {
     <ol className='feedback-list'>
       {
         feedbackItems.map(feedbackItem => {
-          return  <FeedbackItem feedbackItem={feedbackItem}/>
+          return  <FeedbackItem key={feedbackItem.id} feedbackItem={feedbackItem}/>
         })
       }
       
