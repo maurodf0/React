@@ -53,12 +53,10 @@ export default function FeedbackList({}: Props) {
 
   return (
     <ol className='feedback-list'>
-      {
-        isLoading ? <Spinner />  : null
-      }
+      { isLoading && <Spinner /> }
 
       {
-        errorMessage ? <ErrorMessage message={errorMessage} /> : null}
+        errorMessage && <ErrorMessage message={errorMessage} /> }
 
       {
         feedbackItems.map(feedbackItem => {
