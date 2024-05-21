@@ -1,6 +1,7 @@
 import FeedbackItem from "./FeedbackItem";
 import Spinner from "./Spinner";
 import { useEffect, useState } from "react";
+import ErrorMessage from "./ErrorMessage";
 
 
 type Props = {}
@@ -8,13 +9,23 @@ type Props = {}
 export default function FeedbackList({}: Props) {
   const [feedbackItems, setFeedbackItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
     fetch('https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error();
+        }
+        return res.json()
+      })
       .then(data => {
         setFeedbackItems(data.feedbacks);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setErrorMessage('Something went wrong');
         setIsLoading(false);
       })
   }, [])
@@ -24,6 +35,9 @@ export default function FeedbackList({}: Props) {
       {
         isLoading ? <Spinner />  : null
       }
+
+      {
+        errorMessage ? <ErrorMessage message={errorMessage} /> : null}
 
       {
         feedbackItems.map(feedbackItem => {
