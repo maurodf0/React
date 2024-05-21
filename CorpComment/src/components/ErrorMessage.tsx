@@ -1,4 +1,4 @@
-export default function ErrorMessage({message}: ErrorMessageProps) {
+export default function ErrorMessage({message}) {
   return (
     <div>
       {message}
